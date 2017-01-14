@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<messageLog>
+    <news date="'10/07/21">
+        <notice>
+            <message>hogehoge</message>
+        </notice>
+    </news>
+    <news date="'10/09/01">
+        <notice>
+            <message>hogehoge</message>
+            <comment>hogehoge</comment>
+        </notice>
+    </news>
+    <news date="'10/09/05">
+        <notice>
+            <message>hogehoge</message>
+            <comment>hogehoge</comment>
+        </notice>
+        <notice>
+            <message>hogehoge</message>
+            <comment>hogehoge</comment>
+        </notice>
+    </news>
+</messageLog>

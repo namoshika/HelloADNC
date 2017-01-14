@@ -1,0 +1,33 @@
+body {
+	padding: 0px;
+	margin: 0px;
+	background-color: #FFFFFF;
+	background-image: url(../img/bk_binGra.png);
+	background-position: bottom right;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+}
+h1 
+{
+    margin: 0px;
+	padding: 8px 8px 8px 3px;
+	color: #FFFFFF;
+	background-color: #000000;
+}
+h2, h3, p, img {
+	margin: 10px;
+	padding: 2px;
+}
+h2 {
+	color: #000000;
+	margin: 0px;
+	padding: 0px, 5px;
+	border-bottom: 1px solid #CCCCCC;
+}
+h3 {
+	border-left: 5px solid #909090;
+	padding: 0px 0px 0px 2px;
+}
+p {
+	line-height: 170%;
+}

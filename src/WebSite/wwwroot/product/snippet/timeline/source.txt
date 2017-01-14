@@ -1,0 +1,20 @@
+<?php
+    function WriteTimeLine($timelineXml){
+        foreach($timelineXml->news as $news){
+            $date = $news["date"];
+            echo "<dt class=\"date\">{$date}</dt>";
+
+            $notices = $news->notice;
+			$cnt = count($notices);
+            for($i = 0; $i < $cnt; $i++){
+                $msg =  $notices[$i]->message;
+                $class = $i == 0 ? "firstChild" : "";
+                echo "<dd class='message {$class}'>{$msg}</dd>";
+
+                foreach($notices[$i]->comment as $cmme){
+                    echo "<dd class='comment'>/*{$cmme}*/</dd>";
+                }
+            }
+        }
+    }
+?>

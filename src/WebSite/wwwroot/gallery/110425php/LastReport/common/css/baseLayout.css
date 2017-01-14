@@ -1,0 +1,83 @@
+body {
+	padding: 0px;
+	margin: 0px;
+}
+#siteHeaderDiv {
+	background-color: black;
+	padding: 0.8em;
+}
+#siteHeaderDiv, #siteHeaderDiv>.title, #siteHeaderDiv>.menu, #siteHeaderDiv>.menu * {
+	margin: 0px;
+	color: #ffffff;
+}
+#siteHeaderDiv>.title{
+	float: left;
+}
+#siteHeaderDiv>.menu {
+	float: right;
+}
+#siteHeaderDiv>.menu>li {
+	float: left;
+	margin-left: 1.5em;
+	display: table-cell;
+}
+#siteHeaderDiv:after, #siteHeaderDiv>.menu:after{
+	display: block;
+	content: "";
+	width: 0px;
+	height 0px;
+	clear: both;
+}
+#taskListDiv, #taskDetailDiv, #taskEditDiv{
+	display: table-cell;
+}
+#taskQuickEditDiv{
+	display: table-cell;
+	width: 	16em;
+}
+
+div.mainDiv{
+	margin: 1em;
+	float: left;
+}
+dl.keyValDef>.name>*,dl.taskDef>.name {
+	font-weight: bold;
+	color: inherit;
+}
+.taskList{
+	padding-left: 0px;
+	list-style: none;
+}
+.taskList>.taskItem>.taskItemSelecter{
+	float: left;
+}
+dl.keyValDef{
+	overflow: hidden;
+}
+dl.keyValDef>.key {
+	display: block;
+	font-weight: inherit;
+	width: 5em;
+	float: left;
+}
+dl.keyValDef>.val {
+	overflow: hidden;
+	display: block;
+}
+dl.keyValDef>.val:after {
+	display: block;
+	content: "";
+	clear: both;
+	height: 0px;
+	width: 0px;
+}
+dl.keyValDef>.val p{
+	text-indent: 1em;
+	width: 30em;
+}
+.notice, .notice *{
+	color: red;
+}
+.finish * {
+	color: gray;
+}

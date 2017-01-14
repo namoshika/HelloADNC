@@ -1,0 +1,59 @@
+body, html
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*--------------------------
+ * Header
+ *------------------------*/
+#header>*
+{
+    margin: 0px;
+    padding: 0.3em;
+    float:left;
+}
+#siteNav
+{
+    float: right;
+    background-color: Black;
+}
+#siteNav *
+{
+    color: White;
+    text-align:center;
+    display: inline-block;
+    height: 20px;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+#header:after
+{
+    content: ".";
+    clear: both;
+    display:block;
+    height: 0px;
+    visibility: hidden;
+    margin: 0px;
+}
+/*--------------------------
+ * Contents
+ *------------------------*/
+#subHeader>.headline
+{
+    text-align: center;
+}
+#content
+{
+    width: 750px;
+    padding: 0px 10px 50px 10px;
+    margin: 10px auto 30px auto;
+}
+#content>.titleTextBox_horizontal
+{
+    margin: 1em 0em;
+}
+#content>.titleTextBox_horizontal>.title
+{
+    border-bottom-style: none;
+}

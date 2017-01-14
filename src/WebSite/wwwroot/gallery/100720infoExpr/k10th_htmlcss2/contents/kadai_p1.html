@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="ja" lang="ja">
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=100" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+    <title>記事</title>
+    <link rel="stylesheet" type="text/css" href="./styleSheet.css" />
+</head>
+<body>
+    <h1>各圧縮形式の特徴の比較</h1>
+    <div id="bodyCntir">
+        <div id="menu">
+            <ul>
+                <li class="activeMenu"><a href="kadai_p1.html">本文</a></li>
+                <li class="normalMenu"><a href="kadai_p2.html">参考資料</a></li>
+            </ul>
+        </div>
+        <div id="contents">
+            <div id="dataCntier">
+                <h2>実験結果</h2>
+                <h3>環境</h3>
+                <p>画像の圧縮形式の比較としてbmp、jpeg、pngを比較した。 その際、持ち運ぶためにファイルサイズを 小さくするという観点から、汎用的な圧縮方式で あるzip形式による圧縮も要素としていれ、実験した。実験時に利用した画像は幅1920、高さ1200ピクセルの、2タイプの画像を使用した。</p>
+                <ul>
+                    <li>単調なイラストの画像としての適当な顔の画像</li>
+                    <li>複雑な画像としての動物を写した写真の画像</li>
+                </ul>
+                <img alt="animal" width="100" src="img/animal.jpg" />
+                <img alt="illust" width="100" src="img/illust.jpg" />
+                <p>その結果、以下のデータがとれた。なお、使用したソフトはWindowsへプリインストールされている「ペイント」 というソフトを使用して各画像形式に 書き出した。Zip形式への圧縮には「Explzh」というアーカイバを使用した。また、png形式についてはファイル形式そのものが生成時に入力するパラメータが多く、設定次第でファイルサイズ へ大きな影響を与えるようであったため、「OptiPNG」というソフトを用いてペイントで出力したのち、幾つかの最適化された png形式を出力した。 </p>
+                <h3>結果</h3>
+                <div id="grfCntir" class="tile">
+                    <table border="1" id="tbl1">
+                        <caption>写真圧縮</caption>
+                        <colgroup>
+                            <col width="150" />
+                            <col width="80" />
+                        </colgroup>
+                        <thead>
+                            <tr style="background-color: #993300; color: #FFFFFF;">
+                                <th>fileType</th>
+                                <th>fileSize(byte)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>bmp</td>
+                                <td>6,912,054</td>
+                            </tr>
+                            <tr>
+                                <td>bmp + zip</td>
+                                <td>4,813,035</td>
+                            </tr>
+                            <tr>
+                                <td>jpeg</td>
+                                <td>967,589</td>
+                            </tr>
+                            <tr>
+                                <td>jpeg + zip</td>
+                                <td>967,195</td>
+                            </tr>
+                            <tr>
+                                <td>png</td>
+                                <td>5,448,730</td>
+                            </tr>
+                            <tr>
+                                <td>png + zip</td>
+                                <td>5,448,303</td>
+                            </tr>
+                            <tr>
+                                <td>png(RGB)</td>
+                                <td>4,908,205</td>
+                            </tr>
+                            <tr>
+                                <td>png(RGB + filter5)</td>
+                                <td>3,895,434</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <table border="1" id="tbl2">
+                        <caption>イラスト圧縮時</caption>
+                        <colgroup>
+                            <col width="150" />
+                            <col width="80" />
+                        </colgroup>
+                        <thead>
+                            <tr style="background-color: #993300; color: #FFFFFF;">
+                                <th>fileType</th>
+                                <th>fileSize(byte)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>bmp</td>
+                                <td>6,912,054</td>
+                            </tr>
+                            <tr>
+                                <td>bmp + zip</td>
+                                <td>1,883,909</td>
+                            </tr>
+                            <tr>
+                                <td>jpeg</td>
+                                <td>222,675</td>
+                            </tr>
+                            <tr>
+                                <td>jpeg + zip</td>
+                                <td>196,713</td>
+                            </tr>
+                            <tr>
+                                <td>png</td>
+                                <td>2,129,353</td>
+                            </tr>
+                            <tr>
+                                <td>png + zip</td>
+                                <td>2,104,580</td>
+                            </tr>
+                            <tr>
+                                <td>png(RGB)</td>
+                                <td>1,820,904</td>
+                            </tr>
+                            <tr>
+                                <td height="17">png(RGB + filter5)</td>
+                                <td>1,318,818</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <h3>結果の要因</h3>
+                <p>RGBの各色へ8bit割り当てた場合、幅1920、高さ1200ピクセルの画像のサイズは6,912,000byteになる。 よってbmp形式は幅や高さ、色の深度等の情報が付いている分、理論上の画像サイズよりも増えるが、きわめて予測通りに非圧縮の画像が格納されている。一方、興味深い結果としてはjpeg形式の画像を zip形式で圧縮した際、写真では殆ど圧縮率が上がらなかったのに対し、イラストでは圧縮された。だが、png形式では写真、イラストの画像ともにzip形式では圧縮率が上がらなかった点である。これには 以下の要因が考えられる。</p>
+                <ul>
+                    <li>PNG形式は内部でzipと同様のDeflateアルゴリズムを利用した圧縮を行うため、既に圧縮済み。</li>
+                    <li>JPEG形式は画像のデータを間引く事で圧縮を行うが、Deflateのような重複データの記述を省略する圧縮を 行っているわけではないために、単調なイラストでは重複を消すDeflateアルゴリズムによる圧縮が可能。</li>
+                </ul>
+            </div>
+            <div id="thinkCntir">
+                <h2>結論</h2>
+                <p>よって、JPEG等の圧縮ファイルでは既に十分圧縮されているために、zip等で再圧縮は不可能という話は画像本体の内部で zip形式と同様のアルゴリズムを用いている場合に限られる。同様の要因から、PNG等、内部でzipと同様の圧縮アルゴリズムを用いている形式ではzip形式での圧縮は不可能となる。また、PNG形式はアルファブレンドが使用可能であり、１画素あたりの 情報量は増える。よってアルファブレンドを使用しない状態で低機能なソフトによる出力はbmp形式でzipファイル圧縮よりも圧縮率が劣る。そのため、アルファブレンド等のpng独自の機能を用いない場合はpng形式は用いないほうがよいと考える。 </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

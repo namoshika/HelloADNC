@@ -1,0 +1,62 @@
+﻿@{
+    //サイト情報を定義
+    ViewData["OWNER_SITE"] = Startup.SiteOwner;
+    ViewData["TITLE_SITE"] = string.Format("{0}'s site", Startup.SiteOwner);
+}
+
+<!DOCTYPE html>
+<html lang="ja-jp">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>@ViewData["TITLE_PAGE"] - @ViewData["TITLE_SITE"]</title>
+
+    <environment names="Development">
+        <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+    </environment>
+    <environment names="Staging,Production">
+        <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+    </environment>
+    <link rel="Stylesheet" type="text/css" href="~/css/site.css" />
+    @RenderSection("stylesheets", required: false)
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12 col-title">
+                <div id="header" class="nav">
+                    <h1 class="nav-title">
+                        <a asp-controller="Home" asp-action="Index">@ViewData["TITLE_SITE"]</a>
+                    </h1>
+                    <ul class="nav-menu">
+                        @{
+                            Func<string, string> tabClassMarker = currentTab
+                                => ((string)ViewData["CURRENT_TAB"]).ToLower() == currentTab ? "class=active" : "";
+                        }
+                        <li @tabClassMarker("about")><a asp-controller="home" asp-action="About">About</a></li>
+                        <li @tabClassMarker("gallery")><a asp-controller="gallery" asp-action="Index">Gallery</a></li>
+                        <li @tabClassMarker("product")><a asp-controller="home" asp-action="Product">Product</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-12 col-title">
+                <ul id="breadcrumbList" class="breadcrumbList">
+                    <li><a href="../../">TOP</a></li>
+                    <li><a href="../../gallery/">GALLERY</a></li>
+                    <li><a href="../../gallery/100720infoExpr/">大学演習科目課題</a></li>
+                    <li class="current"><span>.</span></li>
+                </ul>
+            </div>
+        </div>
+        @RenderBody()
+        <div id="footer" class="row">
+            <div class="col-md-12">
+                <p id="copyRightDisplay">Copyright &copy; 2010 <a asp-controller="Home" asp-action="About">@ViewData["OWNER_SITE"]</a> All Rights Reserve</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

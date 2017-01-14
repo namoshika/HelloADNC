@@ -1,0 +1,32 @@
+﻿@using WebSite.Models
+@model CatalogInfo
+@{
+    ViewData["CURRENT_TAB"] = Model.Id;
+    ViewData["TITLE_PAGE"] = Model.Title;
+}
+
+<div class="row">
+    <div class="col-md-12 col-section">
+        <div id="contentsGuide" class="section">
+            <h2 class="title">@Model.Title</h2>
+            <p class="text">@Model.Summary</p>
+        </div>
+    </div>
+</div>
+<div class="row row-groupBox">
+    @foreach(var item in Model.Children)
+    {
+    <div class="col-md-4 col-section">
+        <div class="section section-catalog">
+            <img src="@Url.Content(item.ThumbnailUrl)" class="picture" width="250" height="100" alt="thumb" />
+            <h4 class="title">@item.Title</h4>
+            <span class="text">
+                @item.Summary
+                <a asp-controller="@item.Controller"
+                   asp-action="@item.Action"
+                   asp-all-route-data="item.Parameters">[開く]</a>
+            </span>
+        </div>
+    </div>
+    }
+</div>

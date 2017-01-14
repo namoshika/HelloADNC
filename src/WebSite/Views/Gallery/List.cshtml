@@ -1,0 +1,41 @@
+﻿@using WebSite.Models
+@model GalleryInfo
+@{
+    ViewData["CURRENT_TAB"] = Model.Title;
+    ViewData["TITLE_PAGE"] = Model.Title;
+    var wrkIdx = 0;
+}
+
+<div class="row">
+    <div class="col-md-12 col-section">
+        <div id="contentsGuide" class="section">
+            <h2 class="title">@ViewData["TITLE_PAGE"]</h2>
+            <p class="text">@Model.Summary</p>
+        </div>
+    </div>
+    <div class="col-md-12 col-section">
+        <div class="section section-text">
+            <h3 class="title">説明</h3>
+            <p class="text multiLine">@Model.Description</p>
+        </div>
+    </div>
+</div>
+@foreach(var group in Model.Groups)
+{
+    <div class="row row-groupBox">
+        <h3 class="col-md-12 col-title title">@group.Title</h3>
+        @foreach (var item in group.Children)
+        {
+            <div class="col-md-4 col-sm-6 col-section">
+                <a asp-action="Detail"
+                    asp-route-article="@Model.Id"
+                    asp-route-id="@wrkIdx"
+                    class='section galleryItem'>
+                    <img src='~/gallery/@Model.Id/@item.Id/thumb.jpg' alt='thumbnail' class='thumb' />
+                    <span class='title'>@item.Title</span>
+                </a>
+            </div>
+            wrkIdx++;
+        }
+    </div>
+}

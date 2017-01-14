@@ -1,0 +1,94 @@
+div.GroupBox_Container
+{
+    margin: 5px 0px;
+    padding: 5px;
+}
+
+/*FlowPanel ClassÇÃíËã`*/
+ul.flowPanel_Container
+{
+    list-style-type: decimal-leading-zero;
+}
+ul.flowPanel_Container:after
+{
+    content: "";
+    display: block;
+    clear: both;
+}
+ul.flowPanel_Container li
+{
+    width: 38%;
+    float: left;
+    margin: 0px 40px 5px 0px;
+}
+ul.flowPanel_Container li:Hover
+{
+    background-color: #FEA55C;
+}
+ul.flowPanel_Container li a
+{
+    text-decoration: none;
+}
+ul.flowPanel_Container li span.title
+{
+    color: #222222;
+    font-size: larger;
+    font-weight: bold;
+    text-decoration: underline;
+}
+ul.flowPanel_Container li span.description
+{
+    margin: 3px;
+    padding: 5px 10px 5px 5px;
+    color: Black;
+    font-size: 0.7em;
+    line-height: 150%;
+    border-left: 3px solid #B4D67B;
+}
+
+/*StackLayout ClassÇÃíËã`*/
+li.stackLayout *
+{
+    display: block;
+}
+
+/*å¬ï èëéÆ*/
+body
+{
+    margin: 0px;
+    padding: 0px;
+    background-color: #3F0013;
+}
+h1
+{
+	margin: 0px 0px 0px 0px;
+	padding: 10px;
+	color: #ffffff;
+	background-color: #2B0000;
+}
+h2
+{
+    margin: 0px 0px 0px 0px;
+    padding: 0px;
+    background-color: #0B0B33;
+    text-align: center;
+    border-bottom: 3px double gray;
+    color: White;
+}
+h3
+{
+    color: #c5c5c5;
+    font-size: small;
+}
+#linkBox
+{
+    width: 70%;
+    min-width: 30ex;
+    padding: 0px 10px 50px 10px;
+    margin: 0px auto 30px auto;
+    background-color: #ffffff;
+}
+#headerBox
+{
+	margin 0px 0px 10px 0px;
+}

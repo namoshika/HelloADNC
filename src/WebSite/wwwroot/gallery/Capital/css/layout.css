@@ -1,0 +1,11 @@
+#map_canvas{
+	width: 500px;
+	height: 450px;
+}
+#mapDiv, #descriptDiv{
+	display: table-cell;
+	padding: 0px 30px 0px 30px;
+}
+#from{
+	text-align: right;
+}

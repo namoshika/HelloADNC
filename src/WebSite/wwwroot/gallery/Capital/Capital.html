@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+	<title>世界の首都</title>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+	<script type="text/javascript" src="js/lib.js"></script>
+	<script type="text/javascript">
+		//同期通信で首都リストを読み込む
+		loadXml("src/CapitalList.xml", function(status, response) {
+			dataContainer = new CountryContainer(response);
+		});
+	
+		//DOMTree構築完了したら必要な要素の初期化
+		window.addEventListener("load", function() {
+			map = new MapController(
+					document.getElementById("map_canvas"));
+			desc = new DescriptionController(document.getElementById("description"));
+			menu = new PulldownController(
+					document.getElementById("countryNameSelector"),
+					dataContainer.items, map, desc);
+		}, false);
+	</script>
+	<link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+	<h1>世界の首都</h1>
+	<select id="countryNameSelector"></select>
+	<div id="mapDiv">
+		<h2>Map</h2>
+		<div id="map_canvas"></div>
+	</div>
+		<div id="descriptDiv">
+		<h2>Introduction</h2>
+		<p id="description"></p>
+		<p id="from">Wikipediaより引用</p>
+	</div>
+</body>
+</html>

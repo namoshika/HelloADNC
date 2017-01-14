@@ -1,0 +1,50 @@
+<?php
+    function WriteBreadCrumb($currentPath, $homeDirectory, $map){
+        $temp = $currentPath;
+        $pathAry = array();
+        //print($currentPath);
+    
+        $node = $map;$i = 0;
+        while(strlen($temp) > 0)
+        {
+            $notFoundFlg = true;
+            foreach($node->children() as $val){
+                $len = strlen($val["url"]);
+                if($val["url"] == substr($temp, 0, $len)){
+                    $pathAry[$i] = array("title" => (string)$val["title"], "url" => (string)$val["url"]);
+                    $temp = substr($temp, $len);
+
+                    $node = $val;
+                    $i++;
+                    $notFoundFlg = false;
+                    break;
+                }
+            }
+            if($notFoundFlg){
+                break;
+            }
+        }
+        //print_r($pathAry);
+    
+        $cnt = count($pathAry);
+        for($i = $cnt - 1; $i >= 0; $i--){
+            for($j = $i - 1; $j >= 0; $j--){
+                $pathAry[$i]["url"] = $pathAry[$j]["url"].$pathAry[$i]["url"];
+            }
+            //echo $pathAry[$i]["url"]."<br />";
+        }
+        
+        $cnt = count($pathAry);
+        for($i = 0; $i < $cnt; $i++){
+            $title = strtoupper($pathAry[$i]["title"]);
+            $path = "http://".$homeDirectory.$pathAry[$i]["url"];
+                
+            if($i == count($pathAry) - 1){
+?>
+<li class="current"><span><?php echo $i > 0 ? "." : $title; ?></span></li>
+<?php       }else{ ?>
+<li><a href="<?php echo $path; ?>"><?php echo $title ?></a></li>
+<?php       }
+        }
+    }
+?>

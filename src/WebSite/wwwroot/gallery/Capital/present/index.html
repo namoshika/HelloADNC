@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>オブジェクト指向技術課題発表</title>
+    <script type="text/javascript" src="js/jquery-1.6.2.min.js"></script>
+    <script type="text/javascript">
+        var currentIndex = 0;
+        var test;
+        $(document).ready(function () {
+            test = $(".descLst>li");
+            for (var i = 0; i < test.length; i++) {
+                var item = test[i];
+                $(item).css({ visibility: "hidden" });
+            }
+
+            $("#forwardBtn").click(function () {
+                if (currentIndex >= test.length) {
+                    return;
+                }
+                $(test[currentIndex++]).css({ visibility: "visible" });
+            });
+            $("#backBtn").click(function () {
+                if (currentIndex == 0) {
+                    return;
+                }
+                $(test[--currentIndex]).css({ visibility: "hidden" });
+            });
+        });
+    </script>
+    <link rel="stylesheet" href="css/layout.css" />
+</head>
+<body>
+    <div id="navDiv">
+        <input id="backBtn" type="button" value="戻る" />
+        <input id="forwardBtn" type="button" value="次へ" />
+    </div>
+    <h1>意識・工夫した点</h1>
+    <ul class="descLst">
+        <li>
+            <dl>
+                <dt>XMLから取得したデータ本体のオブジェクト化をし、データを扱い易くする</dt>
+                <dd><p>CountryContainerクラスで、親から渡されたXMLをCountryInfoクラスのオブジェクトとして実体化し、これを配列として保持させる機能をもたせました。これにより、扱いが複雑なDOMTreeをこのオブジェクト以外で扱う必要を無くし、他のコントローラー上で国情報を扱いやすくしました。</p></dd>
+                <dt>作成した国情報保持用クラス</dt>
+                <dd>
+                    <ul>
+                        <li>
+                            function CountryContainer(xmlSource){<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;//CountryInfo配列として国情報を保持<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;this.items = new Array();<br />
+                            }
+                        </li>
+                        <li>
+                            function CountryInfo(name, capitalName, xpos, ypos, desc){<br />
+	                            &nbsp;&nbsp;&nbsp;&nbsp;this.name = name;<br />
+	                            &nbsp;&nbsp;&nbsp;&nbsp;this.capitalName = capitalName;<br />
+	                            &nbsp;&nbsp;&nbsp;&nbsp;this.location = {<br />
+		                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;latitude : xpos,<br />
+		                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;longitude : ypos,<br />
+	                            &nbsp;&nbsp;&nbsp;&nbsp;};<br />
+	                            &nbsp;&nbsp;&nbsp;&nbsp;this.description = desc;<br />
+                            }
+                        </li>
+                    </ul>
+                </dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>プルダウンメニューやマップカンバス、説明エリアが持つ機能をオブジェクトとして抽象化する</dt>
+                <dd><p>これにより、各コードが動作に責任持つ範囲を小さくする事でコードが増えた時でも可読性を確保できるようにしました。</p></dd>
+                <dt>作成したコントローラークラス</dt>
+                <dd>
+                    <ul>
+                        <li>
+                            function MapController(mapDivElement){<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;this.setMarker = function(location, toolchip){};<br />
+                            }
+                        </li>
+                        <li>function DescriptionController(descDivElement){<br />
+                            &nbsp;&nbsp;&nbsp;&nbsp;this.setDescription = function(countryInfo){};<br />
+                            }</li>
+                        <li>function PulldownController(selectElement, countryContainer, mapController, descController)</li>
+                    </ul>
+                </dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>XMLのDOMTreeを出来るだけ自然な形で利用する</dt>
+                <dd><p>引数で入れたElementからテキストノードを省いた子要素配列を返すメソッドを作成し、for文などでの添字の不自然な記述を排除しました。</p></dd>
+                <dt>作成した関数</dt>
+                <dd>
+                function getChildNodesWithoutTextNode(element){<br />
+	            &nbsp;&nbsp;&nbsp;&nbsp;var children = new Array();<br />
+	            &nbsp;&nbsp;&nbsp;&nbsp;for ( var i = 0; i < element.childNodes.length; i++) {<br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var child = element.childNodes[i];<br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if (child.nodeName == "#text") {<br />
+			    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;continue;<br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+		        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;children[children.length] = child;<br />
+	            &nbsp;&nbsp;&nbsp;&nbsp;}<br />
+	            &nbsp;&nbsp;&nbsp;&nbsp;return children;<br />
+                }
+                </dd>
+            </dl>
+        </li>
+        <li>
+            <dl>
+                <dt>クラスメンバのアクセス範囲としてローカル変数とメンバ変数を用いてプライベートとパブリックを意識しました</dt>
+                <dd><p>これによって、不必要にクラス内部の変数が変更されないようにしました。</p></dd>
+                <dd>
+                    function MapController(element) {<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;//private fields変数として用いる<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;var maker = null;<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;var map = null;<br /><br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;//methods<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;this.setMarker = function(location, toolchip){<br />
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if(maker != null){<br />
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maker.setMap(null);<br />
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;var latlng = new google.maps.LatLng(location.latitude, location.longitude);<br />
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map.setCenter(latlng);<br />
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;maker = new google.maps.Marker({<br />
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;position: latlng,<br />
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;map: map,<br />
+			        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;title: toolchip,<br />
+		            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;});<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;};<br />
+                    }
+                </dd>
+            </dl>
+        </li>
+    </ul>
+    <h1>苦労・失敗した点</h1>
+    <ul class="descLst">
+        <li>
+            <dl>
+                <dt>JavaScript上でクラスのメンバのプライベート化はすべきじゃなかった</dt>
+                <dd><p>一時保存用の変数とメンバー変数の区別がつかないため、カプセル化に問題がありました。また、関数をインライン関数化しなければならなくなり、メモリ効率に問題もあった。</p></dd>
+                <dd>
+                    function MapController(element) {<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;//思ったよりも一時保存用の変数と混ざるのは思ってた以上に面倒だった<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;var maker = null;<br />
+	                &nbsp;&nbsp;&nbsp;&nbsp;var map = null;<br />
+                    &nbsp;&nbsp;&nbsp;&nbsp;...
+                </dd>
+            </dl>
+        </li>
+    </ul>
+</body>
+</html>

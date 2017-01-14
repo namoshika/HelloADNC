@@ -1,0 +1,29 @@
+dt, p
+{
+    font-size: 20pt;
+}
+p
+{
+    margin-top: 0px;
+}
+ul ul
+{
+    padding-left: 0px;
+}
+dt
+{
+    font-weight: bold;
+}
+body
+{
+    margin-bottom: 300px;
+}
+#navDiv
+{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 0;
+    padding: 5px;
+    background-color: white;
+}

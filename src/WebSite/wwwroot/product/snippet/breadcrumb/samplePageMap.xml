@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<pagemap>
+    <page url="/" title="Top">
+        <page url="about/" title="About" />
+        <page url="gallery/" title="Gallery">
+            <page url="100720infoExpr/" title="大学演習科目課題">
+                <page url="k05th_animalplant/" title="第4-5回: plants animal" />
+                <page url="k06th_flashmotion/" title="第6回: Flashアニメーション" />
+                <page url="k07th_flashas/" title="第7回: Flash動的表現" />
+                <page url="k08th_html/" title="第8回: HTMLのマークアップ" />
+                <page url="k09th_htmlcss1/" title="第9回: CSSを加えたもの" />
+                <page url="k10th_htmlcss2/" title="第10回: CSSページレイアウト" />
+                <page url="k11th_link/" title="第11回: リンク集" />
+                <page url="webSite_ver1.0/" title="WebPage ver1.0" />
+            </page>
+            <page url="product/" title="Topic">
+                <page url="code/" title="CodeModules">
+
+                </page>
+            </page>
+            <page url="100823takao/" title="夏季休暇課題">
+                <page url="?id=dikn" title="ダイコンソウ" />
+                <page url="?id=gezi" title="ゲジゲジシダ" />
+                <page url="?id=hana" title="ハナイカダ" />
+                <page url="?id=hebi" title="ヘビイチゴ" />
+                <page url="?id=hono" title="ホオノキ" />
+                <page url="?id=inod" title="イノデ" />
+                <page url="?id=kago" title="カゴノキ" />
+                <page url="?id=ktne" title="キツネノボタン" />
+                <page url="?id=mizk" title="ミズヒキ" />
+                <page url="?id=momi" title="モミ" />
+                <page url="?id=myic" title="ミヤマフユイチゴ" />
+                <page url="?id=neba" title="粘板岩" />
+                <page url="?id=sdzi" title="スダジイ" />
+                <page url="?id=shga" title="シャガ" />
+                <page url="?id=tama" title="タマアジサイ" />
+                <page url="?id=uraz" title="ウラジロガシ" />
+            </page>
+        </page>
+    </page>
+</pagemap>

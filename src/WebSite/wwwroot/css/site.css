@@ -1,0 +1,278 @@
+body {
+    background: #E7E3DC url("../images/topbg.png") repeat-x top;
+    color: #505050;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Meiryo;
+}
+blockquote {
+    font-size: inherit;
+}
+.important {
+    color: Red;
+}
+.text {
+    line-height: 1.3em;
+}
+.multiLine {
+    text-indent: 1em;
+}
+
+/*-------------------------------
+ * サイトナビゲーション
+ *-------------------------------*/
+.nav {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+}
+.nav-title {
+    display: inline-block;
+    height: 35px;
+    font-size: 30px;
+    margin: 0 auto 9px 0;
+}
+.nav-menu {
+    display: flex;
+    font-size: 16px;
+    list-style: none;
+    align-self: flex-start;
+    margin: 0;
+}
+.nav-menu li {
+    display: table-cell;
+    padding: 0 10px 9px 10px;
+    color: inherit;
+    text-align: center;
+    text-decoration: none;
+}
+.nav-menu li * {
+    display: table-cell;
+    vertical-align: middle;
+    height: 35px;
+}
+.nav-menu .active {
+    background-image: url("../images/currentPtr.png");
+    background-repeat: no-repeat;
+    background-position: center bottom;
+}
+
+/*-------------------------------
+ * パンくずリスト
+ *-------------------------------*/
+.breadcrumbList {
+    display: flex;
+    list-style: none;
+    margin: 10px 0 0 0;
+    padding: 0;
+}
+.breadcrumbList > li {
+    background-image: url("../images/nodeLinker.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+    text-decoration: none;
+}
+.breadcrumbList > li.current {
+    background-image: none;
+}
+.breadcrumbList > li > * {
+    margin: 0;
+    padding-right: 10px;
+    padding-left: 5px;
+}
+
+/*-------------------------------
+ * Grid
+ *-------------------------------*/
+.col-title {
+    padding-left: 8px;
+    padding-right: 8px;
+    margin: 0;
+}
+.col-section {
+    padding: 8px;
+    margin: 0;
+}
+.col-horizontal {
+    padding: 0;
+}
+.row-groupBox>.title {
+    color: #8A8375;
+    font-size: large;
+}
+
+/*-------------------------------
+ * Section
+ *-------------------------------*/
+.section {
+    background-color: White;
+    box-shadow: 0 0 10px 0 rgba(5,5,5,0.2);
+}
+.section-text>.title {
+    font-size: medium;
+    border-bottom: 1px solid orange;
+    margin: 0;
+    padding: 8px 5px 5px 5px;
+}
+.section-text>.text {
+    margin: 0;
+    padding: 10px;
+}
+.section-nav {
+    background-color: transparent;
+    border-left: 2px dotted #B4D67B;
+    box-shadow: none;
+    display: block;
+}
+
+.section-nav * {
+    color: inherit;
+}
+.section-nav>.title {
+    display: block;
+    font-size: larger;
+    text-decoration: underline;
+    margin: 0;
+    padding: 8px 5px 5px 5px;
+}
+.section-nav>.links {
+    display: block;
+    line-height: 1.5;
+    margin: 0.2em;
+}
+.section-catalog {
+    padding: 15px;
+}
+.section-catalog>.title {
+    font-size: 2em;
+    font-weight: bolder;
+    margin: 0.2em 0;
+}
+
+/*-------------------------------
+ * DefList
+ *-------------------------------*/
+dl.defList > dt, dl.defList > dd {
+    line-height: 1.3em;
+    margin: 0;
+    padding: 0;
+}
+dl.defList > dd {
+    margin-left: 5em;
+}
+dl.defList > .firstChild {
+    margin-top: -1.2em;
+}
+
+/*-------------------------------
+ * titlePictureItem
+ *-----------------------------*/
+.picture
+{
+    width: 100%;
+}
+.galleryItem
+{
+    display: flex;
+    padding: 8px;
+}
+.galleryItem .thumb
+{
+    border-width: 0;
+    width: 90px;
+    height: 90px;
+}
+.galleryItem .title
+{
+    color: Black;
+    font-size: smaller;
+    font-weight: bolder;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin: auto 0;
+}
+
+/*-------------------------------
+ * Header
+ *-------------------------------*/
+#header {
+    height: 44px;
+}
+
+#header * {
+    color: #a0a0a0;
+    text-decoration: inherit;
+}
+
+#header a:hover {
+    color: White;
+}
+
+/*-----------------------------
+ * Path
+ *----------------------------*/
+
+#breadcrumbList > li * {
+    color: #8A8375;
+    font-size: large;
+    line-height: 1em;
+}
+#breadcrumbList > li:hover * {
+    color: #625C53;
+}
+#breadcrumbList > li.current:hover * {
+    color: #8A8375;
+}
+
+/*-----------------------------
+ * Center2Colmun Band書式設定
+ *----------------------------*/
+#contentsGuide {
+    background-color: #1A1E24;
+    border: 15px solid white;
+    color: #7493B1;
+    margin: 0;
+    padding: 1em;
+    vertical-align: middle;
+}
+#contentsGuide .title {
+    font-size: 3em;
+    font-weight: bold;
+    margin-top: 0;
+    margin-bottom: 0;
+}
+#contentsGuide a {
+    color: inherit;
+    text-decoration: underline;
+}
+
+#quickLink {
+    display: flex;
+}
+
+#quickLink > * {
+    width: 50%;
+}
+
+/*-----------------------------
+ * About 書式設定
+ *----------------------------*/
+#aboutSite>dl
+{
+    margin-top: 0.5em;
+}
+
+/*-----------------------------
+ * Gallery Nav 書式設定
+ *----------------------------*/
+#articleNav {
+    text-align: right;
+}
+
+/*-----------------------------
+ * Footer 書式設定
+ *----------------------------*/
+#copyRightDisplay, #copyRightDisplay * {
+    color: inherit;
+    text-align: right;
+}

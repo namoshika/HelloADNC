@@ -1,0 +1,50 @@
+﻿@using WebSite.Models
+@model WorkInfo
+@{
+    ViewData["CURRENT_TAB"] = Model.Title;
+    ViewData["TITLE_PAGE"] = Model.Title;
+}
+
+<div class="row">
+    <div class="col-md-12 col-section">
+        <div id="contentsGuide" class="section">
+            <h2 class="title">@ViewData["TITLE_PAGE"]</h2>
+            <p class="text">@Model.Summary</p>
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-4 col-sm-6 col-section">@Html.Raw(Model.Content)</div>
+    <div class="col-md-8 col-sm-6 col-horizontal">
+    @foreach(var card in Model.Descriptions)
+    {
+        <div class="col-section">
+            <div class="section section-text">
+                <h3 class="title">@card.Title</h3>
+                <p class='text multiLine'>@card.Content</p>
+            </div>
+        </div>
+    }
+    </div>
+</div>
+<div class="row">
+    <div id="articleNav" class="col-md-12 col-section">
+        @if (ViewBag.HasPreviousItem)
+        {
+            <a asp-action="Detail"
+               asp-route-article="@ViewBag.CurrentArticle"
+               asp-route-id="@ViewBag.PrevIndex">前へ</a>
+        }
+        else
+        { <span>前へ</span> }
+        @if (ViewBag.HasNextItem)
+        {
+            <a asp-action="Detail"
+               asp-route-article="@ViewBag.CurrentArticle"
+               asp-route-id="@ViewBag.NextIndex">次へ</a>
+        }
+        else
+        { <span>次へ</span> }
+        <a asp-action="List" asp-route-article="@ViewBag.CurrentArticle">一覧へ戻る</a>
+    </div>
+</div>

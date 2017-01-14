@@ -1,0 +1,37 @@
+﻿@{
+    ViewData["CURRENT_TAB"] = "top";
+    ViewData["TITLE_PAGE"] = "Top";
+    ViewData["OWNER_SITE"] = Startup.SiteOwner;
+}
+
+<div class="row">
+    <div class="col-md-12 col-section">
+        <div id="contentsGuide" class="row section">
+            <div class="col-md-6 col-md-offset-6 right">
+                <h2 id="siteMessage" class="title">Wellcome!!</h2>
+                <p id="siteTagline" class="text multiLine">このサイトでは、<a asp-controller="home" asp-action="About">@ViewData["OWNER_SITE"]</a>が大学演習科目で作成した成果物を陳列しております。特に価値有るものはありませんがゆっくりしていって下さい。</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-section">
+        <div id="updateHistory" class="section section-text">
+            <h2 class="title">Update log</h2>
+            <dl class="defList text"></dl>
+        </div>
+    </div>
+    <div id="quickLink" class="col-md-6 col-section">
+        <div class="section section-nav">   
+            <h3 class="title"><a asp-controller="gallery" asp-action="Index">Gallery</a></h3>
+            <ul class="links">
+                <li><a asp-controller="gallery" asp-action="100720infoExpr">大学演習科目課題</a></li>
+                <li><a asp-controller="gallery" asp-action="100823takao">夏季休暇課題</a></li>
+            </ul>
+        </div>
+        <div class="section section-nav">
+            <h3 class="title"><a asp-controller="product" asp-action="Index">Product</a></h3>
+            <ul class="links">
+                <li><a asp-controller="product" asp-action="Modules">CodeModules</a></li>
+            </ul>
+        </div>
+    </div>
+</div>

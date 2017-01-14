@@ -1,0 +1,102 @@
+/*---------------------------------
+ * [div] GroupBox
+ *--------------------------------*/
+.groupBox
+{
+    margin: 0px;
+    padding: 0px;
+}
+
+/*---------------------------------
+ * [ul] ListTile
+ *--------------------------------*/
+.list_tile>li
+{
+    float: left;
+}
+.list_tile:after
+{
+    clear: both;
+    content: ".";
+    display: block;
+    visibility: hidden;
+    height: 0px;
+}
+.list_tile:after
+{
+    clear: left;
+}
+
+/*---------------------------------
+ * [div] Title&Text Box
+ *--------------------------------*/
+.titleTextBox, .titleTextBox>*
+{
+    display: block;
+}
+.titleTextBox>.text, .titleTextBox>.text *
+{
+    margin: 2px;
+    padding: 3px;
+    border-left-width: 3px;
+    border-left-style: solid;
+}
+
+/*---------------------------------
+ * [div] Headline
+ *--------------------------------*/
+.headline, .headline>*
+{
+	margin: 0px;
+	padding: 0px;
+}
+.headline>*
+{
+    display:inline;
+}
+.headline>.title *
+{
+	text-decoration: inherit;
+	color: inherit;
+}
+/*---------------------------------
+ * [ul] MenuBar
+ *--------------------------------*/
+.menuBar
+{
+    list-style: none;
+    margin: 0px;
+    padding: 0px;
+}
+.menuBar>li
+{
+    float:left;
+}
+.menuBar>li *
+{
+    padding: 2px 0.6em;
+}
+.menuBar:after
+{
+    clear: both;
+    content: ".";
+    display: block;
+    height: 0px;
+    margin: 0px;
+    padding: 0px;
+    visibility: hidden;
+}
+/*---------------------------------
+ * [div] Title&Text Box_Horizontal
+ *--------------------------------*/
+.titleTextBox_horizontal,
+.titleTextBox_horizontal>.title,
+.titleTextBox_horizontal>.text
+{
+    margin: 0px;
+    padding: 0px;
+}
+.titleTextBox_horizontal>.title
+{
+    margin: 0px 0px 0.2em 0px;
+}
