@@ -44,10 +44,7 @@
             </div>
             <div class="col-md-12 col-title">
                 <ul id="breadcrumbList" class="breadcrumbList">
-                    <li><a href="../../">TOP</a></li>
-                    <li><a href="../../gallery/">GALLERY</a></li>
-                    <li><a href="../../gallery/100720infoExpr/">大学演習科目課題</a></li>
-                    <li class="current"><span>.</span></li>
+                    @await Component.InvokeAsync("PagePath", "Breadcrumb")
                 </ul>
             </div>
         </div>

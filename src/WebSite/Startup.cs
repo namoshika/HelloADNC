@@ -7,12 +7,13 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-
 using System.Text.Encodings.Web;
 using System.Text.Unicode;
 
 namespace WebSite
 {
+    using Models;
+
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -32,6 +33,8 @@ namespace WebSite
         {
             // Add framework services.
             services.AddMvc();
+            services.AddPagemap();
+            services.AddSingleton<PagePathHelper>();
             services.AddSingleton(HtmlEncoder.Create(
                 UnicodeRanges.BasicLatin, UnicodeRanges.CjkSymbolsandPunctuation,
                 UnicodeRanges.Hiragana, UnicodeRanges.Katakana, UnicodeRanges.CjkUnifiedIdeographs));

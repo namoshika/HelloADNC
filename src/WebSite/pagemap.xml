@@ -1,39 +1,38 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<pagemap>
-    <page url="/" title="Top">
-        <page url="about/" title="About" />
-        <page url="product/" title="Product">
-            <page url="modules/" title="CodeModules" />
-        </page>
-        <page url="gallery/" title="Gallery">
-            <page url="100720infoExpr/" title="大学演習科目課題">
-                <page url="?id=k05th_animalplant" title="第4-5回: plants animal" />
-                <page url="?id=k06th_flashmotion" title="第6回: Flashアニメーション" />
-                <page url="?id=k07th_flashas" title="第7回: Flash動的表現" />
-                <page url="?id=k08th_html" title="第8回: HTMLのマークアップ" />
-                <page url="?id=k09th_htmlcss1" title="第9回: CSSを加えたもの" />
-                <page url="?id=k10th_htmlcss2" title="第10回: CSSページレイアウト" />
-                <page url="?id=k11th_link" title="第11回: リンク集" />
-                <page url="?id=k12th_web" title="WebPage ver1.0" />
-            </page>
-            <page url="100823takao/" title="夏季休暇課題">
-                <page url="?id=dikn" title="ダイコンソウ" />
-                <page url="?id=gezi" title="ゲジゲジシダ" />
-                <page url="?id=hana" title="ハナイカダ" />
-                <page url="?id=hebi" title="ヘビイチゴ" />
-                <page url="?id=hono" title="ホオノキ" />
-                <page url="?id=inod" title="イノデ" />
-                <page url="?id=kago" title="カゴノキ" />
-                <page url="?id=ktne" title="キツネノボタン" />
-                <page url="?id=mizk" title="ミズヒキ" />
-                <page url="?id=momi" title="モミ" />
-                <page url="?id=myic" title="ミヤマフユイチゴ" />
-                <page url="?id=neba" title="粘板岩" />
-                <page url="?id=sdzi" title="スダジイ" />
-                <page url="?id=shga" title="シャガ" />
-                <page url="?id=tama" title="タマアジサイ" />
-                <page url="?id=uraz" title="ウラジロガシ" />
-            </page>
-        </page>
+<page title="Top" controller="Home" action="Index">
+  <page title="About" controller="Home" action="About" />
+  <page title="Product" controller="Home" action="Product">
+    <page title="Snippet" controller="Snippet" action="Index" />
+  </page>
+  <page title="Gallery" controller="Home" action="Gallery">
+    <page title="大学演習科目課題" controller="Gallery" action="List" asp-route-article="100720infoExpr">
+      <page title="第4-5回: plants animal" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="0" />
+      <page title="第6回: Flashアニメーション"  controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="1" />
+      <page title="第7回: Flash動的表現" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="2" />
+      <page title="第8回: HTMLのマークアップ" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="3" />
+      <page title="第9回: CSSを加えたもの" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="4" />
+      <page title="第10回: CSSページレイアウト" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="5" />
+      <page title="第11回: リンク集" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="6" />
+      <page title="WebPage ver1.0" controller="Gallery" action="Detail" asp-route-article="100720infoExpr" asp-route-id="7" />
     </page>
-</pagemap>
+    <page title="夏季休暇課題" controller="Gallery" action="List" asp-route-article="100823takao">
+      <page title="ダイコンソウ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="0" />
+      <page title="ゲジゲジシダ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="1" />
+      <page title="ハナイカダ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="2" />
+      <page title="ヘビイチゴ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="3" />
+      <page title="イノデ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="4" />
+      <page title="ヤマキツネノボタン" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="5" />
+      <page title="ミズヒキ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="6" />
+      <page title="ミヤマフユイチゴ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="7" />
+      <page title="シャガ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="8" />
+      <page title="タマアジサイ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="9" />
+      <page title="ホオノキ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="10" />
+      <page title="モミ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="11" />
+      <page title="スダジイ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="12" />
+      <page title="ウラジロガシ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="13" />
+      <page title="カゴノキ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="14" />
+      <page title="粘板岩" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="15" />
+      <page title="ザトウムシ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="16" />
+    </page>
+  </page>
+</page>

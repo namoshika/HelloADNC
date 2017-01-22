@@ -1,0 +1,18 @@
+﻿@model WebSite.Models.PageInfo[]
+@for (var i = 0; i < Model.Length; i++)
+{
+    @if (i < Model.Length - 1)
+    {
+        <li>
+            <a asp-controller="@Model[i].Controller"
+               asp-action="@Model[i].Action"
+               asp-all-route-data="Model[i].Parameters">@Model[i].Title</a>
+        </li>
+    }
+    else
+    {
+        <li class="current">
+            <span>@(i == 0 ? Model[0].Title : ".")</span>
+        </li>
+    }
+}
