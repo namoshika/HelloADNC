@@ -107,6 +107,7 @@ blockquote {
 .section {
     background-color: White;
     box-shadow: 0 0 10px 0 rgba(5,5,5,0.2);
+    height: 100%;
 }
 .section-text>.title {
     font-size: medium;

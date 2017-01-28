@@ -16,16 +16,43 @@ namespace WebSite.Controllers
         [Route("{article}/")]
         public IActionResult List(string article)
         {
-            GalleryInfo obj;
-            if (bbb.TryGetValue(article, out obj) == false)
-                return NotFound();
+            switch (article)
+            {
+                case "170128experiment":
+                    var fileLinks = System.IO.Directory.EnumerateFiles("./wwwroot/gallery/170128experiment")
+                        .Select(filePath =>
+                            new LinkInfo() {
+                                Title = System.IO.Path.GetFileName(filePath),
+                                Action = Url.Content("~" + filePath.Substring("./wwwroot".Length))
+                            })
+                        .ToArray();
+                    var contents = new GalleryInfo<LinkInfo>()
+                    {
+                        Id = "170128experiment",
+                        Title = "実験場",
+                        Summary = "色々試す場所",
+                        Description = "(´・ω・`)...",
+                        Groups = new[]
+                        {
+                            new GroupInfo<LinkInfo>()
+                            {
+                                Children = fileLinks
+                            }
+                        }
+                    };
+                    return View("List2", contents);
+                default:
+                    GalleryInfo<WorkInfo> obj;
+                    if (bbb.TryGetValue(article, out obj) == false)
+                        return NotFound();
+                    return View(obj);
+            }
 
-            return View(obj);
         }
         [Route("{article}/{id}")]
         public IActionResult Detail(string article, int id)
         {
-            GalleryInfo obj;
+            GalleryInfo<WorkInfo> obj;
             if (bbb.TryGetValue(article, out obj) == false)
                 return NotFound();
 
@@ -48,13 +75,12 @@ namespace WebSite.Controllers
             ViewBag.CurrentArticle = article;
             return View(obj.Groups[grpIdx].Children[wrkIdx]);
         }
-
         #region Data
-        Dictionary<string, GalleryInfo> bbb = new Dictionary<string, GalleryInfo>()
+        Dictionary<string, GalleryInfo<WorkInfo>> bbb = new Dictionary<string, GalleryInfo<WorkInfo>>()
         {
             {
                 "100720infoExpr",
-                new GalleryInfo()
+                new GalleryInfo<WorkInfo>()
                 {
                     Id = "100720infoExpr",
                     Title = "大学演習科目課題",
@@ -233,7 +259,7 @@ namespace WebSite.Controllers
             },
             {
                 "100823takao",
-                new GalleryInfo()
+                new GalleryInfo<WorkInfo>()
                 {
                     Id = "100823takao",
                     Title = "夏季休暇課題",

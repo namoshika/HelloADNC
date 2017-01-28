@@ -1,9 +1,8 @@
 ﻿@using WebSite.Models
-@model GalleryInfo<WorkInfo>
+@model GalleryInfo<LinkInfo>
 @{
     ViewData["CURRENT_TAB"] = "gallery";
     ViewData["TITLE_PAGE"] = Model.Title;
-    var wrkIdx = 0;
 }
 
 <div class="row">
@@ -20,22 +19,17 @@
         </div>
     </div>
 </div>
-@foreach(var group in Model.Groups)
+@foreach (var group in Model.Groups)
 {
     <div class="row row-groupBox">
         <h3 class="col-md-12 col-title title">@group.Title</h3>
         @foreach (var item in group.Children)
         {
             <div class="col-md-4 col-sm-6 col-section">
-                <a asp-action="Detail"
-                    asp-route-article="@Model.Id"
-                    asp-route-id="@wrkIdx"
-                    class='section galleryItem'>
-                    <img src='~/gallery/@Model.Id/@item.Id/thumb.jpg' alt='thumbnail' class='thumb' />
+                <a href="@item.Action" class='section galleryItem'>
                     <span class='title'>@item.Title</span>
                 </a>
             </div>
-            wrkIdx++;
         }
     </div>
 }

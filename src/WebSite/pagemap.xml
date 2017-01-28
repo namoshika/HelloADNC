@@ -34,5 +34,6 @@
       <page title="粘板岩" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="15" />
       <page title="ザトウムシ" controller="Gallery" action="Detail" asp-route-article="100823takao" asp-route-id="16" />
     </page>
+    <page title="実験場" controller="Gallery" action="List" asp-route-article="170128experiment" />
   </page>
 </page>

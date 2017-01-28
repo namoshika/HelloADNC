@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebSite.Models
 {
-    public class CatalogInfo : ContentInfo
+    public class CatalogInfo<TChildren> : ContentInfo
     {
-        public IEnumerable<LinkInfo> Children { get; set; }
+        public IEnumerable<TChildren> Children { get; set; }
     }
     public class LinkInfo : ContentInfo
     {

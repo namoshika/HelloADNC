@@ -5,9 +5,9 @@ using System.Threading.Tasks;
 
 namespace WebSite.Models
 {
-    public class GalleryInfo : ContentInfo
+    public class GalleryInfo<TWork> : ContentInfo
     {
         public string Description { get; set; }
-        public GroupInfo<WorkInfo>[] Groups { get; set; }
+        public GroupInfo<TWork>[] Groups { get; set; }
     }
 }

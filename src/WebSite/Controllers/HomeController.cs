@@ -24,7 +24,7 @@ namespace WebSite.Controllers
         [Route("gallery/")]
         public IActionResult Gallery()
         {
-            var model = new CatalogInfo()
+            var model = new CatalogInfo<LinkInfo>()
             {
                 Id = "gallery",
                 Title = "Gallery",
@@ -36,7 +36,7 @@ namespace WebSite.Controllers
                         Id = "100720infoExpr",
                         Title = "大学演習科目課題",
                         Summary = "授業の課題で作成した成果物を陳列しています。",
-                        ThumbnailUrl = "~/gallery/100720infoExpr/image/thumb.gif",
+                        ThumbnailUrl = "~/gallery/100720infoExpr/image/thumb.jpg",
                         Controller = "Gallery",
                         Action = "List",
                         Parameters = new Dictionary<string, string>() { { "article", "100720infoExpr" } }
@@ -51,6 +51,16 @@ namespace WebSite.Controllers
                         Action = "List",
                         Parameters = new Dictionary<string, string>() { { "article", "100823takao" } }
                     },
+                    new LinkInfo()
+                    {
+                        Id = "170128experiment",
+                        Title = "実験場",
+                        Summary = "色々試す場所",
+                        ThumbnailUrl = "~/gallery/170128experiment/image/thumb.gif",
+                        Controller = "Gallery",
+                        Action = "List",
+                        Parameters = new Dictionary<string, string>() { { "article", "170128experiment" } }
+                    },
                 }
             };
             return View("Catalog", model);
@@ -58,7 +68,7 @@ namespace WebSite.Controllers
         [Route("product/")]
         public IActionResult Product()
         {
-            var model = new CatalogInfo()
+            var model = new CatalogInfo<LinkInfo>()
             {
                 Id = "product",
                 Title = "Product",
