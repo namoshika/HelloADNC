@@ -11,14 +11,16 @@
     <title>@ViewData["TITLE_PAGE"] - @ViewData["TITLE_SITE"]</title>
 
     <environment names="Development">
-        <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
+        <script type="text/javascript" src="~/lib/masonry/dist/masonry.pkgd.js"></script>
     </environment>
     <environment names="Staging,Production">
-        <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
               asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="~/lib/masonry/dist/masonry.pkgd.min.js"></script>
     </environment>
     <link rel="Stylesheet" type="text/css" href="~/css/site.css" />
     @RenderSection("stylesheets", required: false)

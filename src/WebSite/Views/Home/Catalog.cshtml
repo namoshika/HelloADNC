@@ -16,7 +16,7 @@
 <div class="row row-groupBox">
     @foreach (var item in Model.Children)
     {
-        <div class="col-md-4 col-section">
+        <div class="col-md-4 col-sm-6 col-section">
             <div class="section section-catalog">
                 <img src="@Url.Content(item.ThumbnailUrl)" class="picture" width="250" height="100" alt="thumb" />
                 <h4 class="title">@item.Title</h4>

@@ -2,6 +2,31 @@
     ViewData["CURRENT_TAB"] = "about";
     ViewData["TITLE_PAGE"] = "About";
 }
+@section stylesheets{
+    <script type="text/javascript">
+        var masonryIsEnable = false;
+        function updateMasonry() {
+            if (window.innerWidth < 768) {
+                if (!masonryIsEnable)
+                    return;
+                $(".masonry-container").masonry("destroy");
+                masonryIsEnable = false;
+            }
+            else {
+                if (masonryIsEnable)
+                    return;
+                $(".masonry-container").masonry({
+                    itemSelector: ".col-section",
+                    columnWidth: ".grid-sizer",
+                });
+                masonryIsEnable = true;
+            }
+
+        }
+        $(updateMasonry);
+        $(window).resize(updateMasonry)
+    </script>
+}
 
 <div class="row">
     <div class="col-md-12 col-section">
@@ -10,7 +35,10 @@
             <p class="text">サイトの構成や、制作者について、感想の類が書いてあります。</p>
         </div>
     </div>
-    <div class="col-md-6 col-section">
+</div>
+<div class="row masonry-container">
+    <div class="col-sm-6 grid-sizer"></div>
+    <div class="col-sm-6 col-section">
         <div class="section section-text">
             <h3 class="title">this site...</h3>
             <div class="text">
@@ -26,7 +54,7 @@
             </div>
         </div>
     </div>
-    <div class="col-md-6 col-section">
+    <div class="col-sm-6 col-section">
         <div class="section section-text">
             <h3 class="title">namoshika's Profile</h3>
             <dl class="text defList">
@@ -41,7 +69,7 @@
             </dl>
         </div>
     </div>
-    <div class="col-md-6 col-section">
+    <div class="col-sm-6 col-section">
         <div class="section section-text">
             <h3 class="title">サイト制作について</h3>
             <div class="text">
