@@ -33,15 +33,7 @@
                     <h1 class="nav-title">
                         <a asp-controller="Home" asp-action="Index">@ViewData["TITLE_SITE"]</a>
                     </h1>
-                    <ul class="nav-menu">
-                        @{
-                            Func<string, string> tabClassMarker = currentTab
-                                => ((string)ViewData["CURRENT_TAB"]).ToLower() == currentTab ? "class=active" : "";
-                        }
-                        <li @tabClassMarker("about")><a asp-controller="home" asp-action="About">About</a></li>
-                        <li @tabClassMarker("gallery")><a asp-controller="gallery" asp-action="Index">Gallery</a></li>
-                        <li @tabClassMarker("product")><a asp-controller="home" asp-action="Product">Product</a></li>
-                    </ul>
+                    @await Component.InvokeAsync("PagePath", "NavMenu")
                 </div>
             </div>
             <div class="col-md-12 col-title">
