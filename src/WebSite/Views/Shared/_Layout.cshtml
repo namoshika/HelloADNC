@@ -26,16 +26,18 @@
     @RenderSection("stylesheets", required: false)
 </head>
 <body>
+    <nav class="navbar navbar-inverse navbar-static-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">@ViewData["TITLE_SITE"]</a>
+            </div>
+            <ul class="nav navbar-nav navbar-right">
+                @await Component.InvokeAsync("PagePath", "NavMenu")
+            </ul>
+        </div>
+    </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-12 col-title">
-                <div id="header" class="nav">
-                    <h1 class="nav-title">
-                        <a asp-controller="Home" asp-action="Index">@ViewData["TITLE_SITE"]</a>
-                    </h1>
-                    @await Component.InvokeAsync("PagePath", "NavMenu")
-                </div>
-            </div>
             <div class="col-md-12 col-title">
                 <ul id="breadcrumbList" class="breadcrumbList">
                     @await Component.InvokeAsync("PagePath", "Breadcrumb")

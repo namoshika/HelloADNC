@@ -1,5 +1,6 @@
 body {
-    background: #E7E3DC url("../images/topbg.png") repeat-x top;
+    /*background: #E7E3DC url("../images/topbg.png") repeat-x top;*/
+    background-color: #E7E3DC;
     color: #505050;
     margin: 0;
     padding: 0;
@@ -21,37 +22,27 @@ blockquote {
 /*-------------------------------
  * サイトナビゲーション
  *-------------------------------*/
-.nav {
-    display: flex;
-    align-items: flex-start;
-    justify-content: flex-start;
+.navbar {
+    min-height: 40px;
+    margin-bottom: 0;
+    border-width: 0;
 }
-.nav-title {
-    display: inline-block;
-    height: 35px;
-    font-size: 30px;
-    margin: 0 auto 9px 0;
+
+.navbar-brand {
+  height: 40px;
+  line-height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.nav-menu {
-    display: flex;
-    font-size: 16px;
-    list-style: none;
-    align-self: flex-start;
-    margin: 0;
+
+.navbar-nav > li > a {
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+  padding-top: 0;
+  padding-bottom: 0;
 }
-.nav-menu li {
-    display: table-cell;
-    padding: 0 10px 9px 10px;
-    color: inherit;
-    text-align: center;
-    text-decoration: none;
-}
-.nav-menu li * {
-    display: table-cell;
-    vertical-align: middle;
-    height: 35px;
-}
-.nav-menu .active {
+.navbar-nav > li.active > a {
     background-image: url("../images/currentPtr.png");
     background-repeat: no-repeat;
     background-position: center bottom;

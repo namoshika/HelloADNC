@@ -6,8 +6,6 @@
     Func<string, string> tabClassMarker = currentTab
         => Model.Length >= 2 && Model[1].Title == currentTab ? "class=active" : "";
 }
-<ul class="nav-menu">
-    <li @tabClassMarker("About")><a asp-controller="home" asp-action="About">About</a></li>
-    <li @tabClassMarker("Gallery")><a asp-controller="gallery" asp-action="Index">Gallery</a></li>
-    <li @tabClassMarker("Product")><a asp-controller="home" asp-action="Product">Product</a></li>
-</ul>
+<li @tabClassMarker("About")><a asp-controller="home" asp-action="About">About</a></li>
+<li @tabClassMarker("Gallery")><a asp-controller="gallery" asp-action="Index">Gallery</a></li>
+<li @tabClassMarker("Product")><a asp-controller="home" asp-action="Product">Product</a></li>
