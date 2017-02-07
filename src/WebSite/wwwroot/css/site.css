@@ -18,6 +18,9 @@ blockquote {
 .multiLine {
     text-indent: 1em;
 }
+.container {
+    max-width: 970px;
+}
 
 /*-------------------------------
  * サイトナビゲーション
