@@ -8,12 +8,14 @@
 <html lang="ja-jp">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=yes" />
     <title>@ViewData["TITLE_PAGE"] - @ViewData["TITLE_SITE"]</title>
 
     <environment names="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
         <script type="text/javascript" src="~/lib/jquery/dist/jquery.js"></script>
         <script type="text/javascript" src="~/lib/masonry/dist/masonry.pkgd.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     </environment>
     <environment names="Staging,Production">
         <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.6/css/bootstrap.min.css"
@@ -21,6 +23,7 @@
               asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
         <script type="text/javascript" src="~/lib/jquery/dist/jquery.min.js"></script>
         <script type="text/javascript" src="~/lib/masonry/dist/masonry.pkgd.min.js"></script>
+        <script type="text/javascript" src="~/lib/bootstrap/dist/js/bootstrap.min.js"></script>
     </environment>
     <link rel="Stylesheet" type="text/css" href="~/css/site.css" />
     @RenderSection("stylesheets", required: false)
@@ -29,11 +32,18 @@
     <nav class="navbar navbar-inverse navbar-static-top">
         <div class="container">
             <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
                 <a class="navbar-brand" asp-controller="Home" asp-action="Index">@ViewData["TITLE_SITE"]</a>
             </div>
-            <ul class="nav navbar-nav navbar-right">
-                @await Component.InvokeAsync("PagePath", "NavMenu")
-            </ul>
+            <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    @await Component.InvokeAsync("PagePath", "NavMenu")
+                </ul>
+            </div>
         </div>
     </nav>
     <div class="container">

@@ -1,5 +1,4 @@
 body {
-    /*background: #E7E3DC url("../images/topbg.png") repeat-x top;*/
     background-color: #E7E3DC;
     color: #505050;
     margin: 0;
@@ -30,25 +29,29 @@ blockquote {
     margin-bottom: 0;
     border-width: 0;
 }
-
 .navbar-brand {
   height: 40px;
   line-height: 40px;
   padding-top: 0;
   padding-bottom: 0;
 }
-
 .navbar-nav > li > a {
-  display: inline-block;
   height: 40px;
   line-height: 40px;
   padding-top: 0;
   padding-bottom: 0;
 }
-.navbar-nav > li.active > a {
-    background-image: url("../images/currentPtr.png");
-    background-repeat: no-repeat;
-    background-position: center bottom;
+.navbar-toggle {
+    border-style: none;
+    margin: 4px;
+    border-radius: inherit;
+}
+@media (min-width: 768px) {
+    .navbar-nav > li.active > a {
+        background-image: url("../images/currentPtr.png");
+        background-repeat: no-repeat;
+        background-position: center bottom;
+    }
 }
 
 /*-------------------------------
