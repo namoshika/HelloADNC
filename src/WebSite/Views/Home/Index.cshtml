@@ -1,5 +1,6 @@
-﻿@{
-    ViewData["TITLE_PAGE"] = "Top";
+﻿@model RootVM
+@{
+    ViewData["TITLE_PAGE"] = Model.Current.Title;
     ViewData["OWNER_SITE"] = Startup.SiteOwner;
 }
 
@@ -8,7 +9,7 @@
         <div id="contentsGuide" class="row section">
             <div class="col-md-6 col-md-offset-6 right">
                 <h2 id="siteMessage" class="title">Wellcome!!</h2>
-                <p id="siteTagline" class="text multiLine">このサイトでは、<a asp-controller="home" asp-action="About">@ViewData["OWNER_SITE"]</a>が大学演習科目で作成した成果物を陳列しております。特に価値有るものはありませんがゆっくりしていって下さい。</p>
+                <p id="siteTagline" class="text multiLine">@Html.Raw(Model.Summary)</p>
             </div>
         </div>
     </div>
@@ -19,18 +20,19 @@
         </div>
     </div>
     <div id="quickLink" class="col-md-6 col-section">
-        <div class="section section-nav">   
-            <h3 class="title"><a asp-controller="gallery" asp-action="Index">Gallery</a></h3>
-            <ul class="links">
-                <li><a asp-controller="Gallery" asp-action="100720infoExpr">大学演習科目課題</a></li>
-                <li><a asp-controller="Gallery" asp-action="100823takao">夏季休暇課題</a></li>
-            </ul>
-        </div>
+    @foreach(var pin in Model.Pin)
+    {
         <div class="section section-nav">
-            <h3 class="title"><a asp-controller="Home" asp-action="Product">Product</a></h3>
+            <h3 class="title"><a asp-controller="@pin.Title.Controller" asp-action="@pin.Title.Action">@pin.Title.Title</a></h3>
             <ul class="links">
-                <li><a asp-controller="Snippet" asp-action="Index">CodeModules</a></li>
+            @foreach(var linkPage in pin.Page)
+            {
+                <li><a asp-controller="@linkPage.Controller"
+                       asp-action="@linkPage.Action"
+                       asp-all-route-data="linkPage.GetParameters()">@linkPage.Title</a></li>
+            }
             </ul>
         </div>
+    }
     </div>
 </div>

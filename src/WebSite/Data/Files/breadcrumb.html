@@ -1,0 +1,43 @@
+﻿<p>
+    <a href="/product/snippet/breadcrumb/source.txt">PHPSource</a>
+    <a href="/product/snippet/breadcrumb/samplePageMap.xml">SamplePageMap.xml</a>
+</p>
+<p>サイトタイトルの下にある"TOP&gt;GALLERY&gt;..."を生成するPHPスクリプトです。ページ構造を記述したXMLを用いてページのURLよりトップから自身の親ページまでの関係を導き出し、そのリンクを&lt;li&gt;&lt;a&gt;...&lt;/a&gt;&lt;/li&gt;で出力します</p>
+<a id="aaa-btn" href="javascript:void(0);">詳細</a>
+<div id="aaa-area">
+    <h4>PHPスクリプトについて</h4>
+    <p>この機能はPHPファイル内でWriteBreadCrumb関数として定義されており、関数の仕様は以下の通りです。</p>
+    <blockquote>
+        WriteBreadCrumb(string currentPath, string $homeDirectory, SimpleXmlElement $map);
+    </blockquote>
+    <p>引数の役割は第1引数が"現在位置($currentPath)、第2引数がサイトスペースの最上層のパス($homeDirectory)、第3引数がページ間関係記述XML($map)"となっており、使用する際は下の例のようにパンくずリストを挿入したい場所でWriteBreadCrumb関数を呼び出します。なお、この関数は$currentPathと$homeDirectoryから親ページのURLを生成しますが、これは$homeDirectoryの後に$mapの定義に従い、分割された$currentPathを順次結合させることで生成しています。そして$homeDirectoryは"http://"を含まず、ドメインから始まります。その点を把握すると$currentPathを書きやすくなると思います。</p>
+    <blockquote>
+        &lt;ul&gt;&lt;?php<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;include $phpFilePath;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;WriteBreadCrumb("/gallery/product/", "hogehoge.com/approot", simplexml_load_file("pagemap.xml"));<br />
+        ?&gt;&lt;/ul&gt;
+    </blockquote>
+    <h4>XMLファイルの仕様について</h4>
+    <p>XMLファイルはpagemapタグをルートタグとし、その下にpageタグがネストする事で、Topページから末端ページまでの階層関係を保持しております。そして、このpageタグはtitle属性とurl属性を保持しており、トップページのpageタグから目的のページまでを辿りながら経路上のpageタグのurlの内容を取得・結合していくことで自身に繋がる経路に存在するページのURLを把握していきます。</p>
+    <blockquote>
+        &lt;pagemap&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;<span class="important">&lt;page title="Top" url="/"&gt;</span><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;page title="About" url="about/" /&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="important">&lt;page title="Gallery" url="gallery/"&gt;</span><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="important">&lt;page title="CodeModules" url="modules/"&gt;</span><br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/page&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;page title="Topic" url="topics/"&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;/page&gt;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&lt;/page&gt;<br />
+        &lt;/pagemap&gt;<br />
+    </blockquote>
+    <p>上記のXMLでは以下のように自身へ繋がる経路上のページURLを取得します。</p>
+    <blockquote>
+        $homeDirectory: "hogehoge.com";<br />
+        TOP: "hogehoge.com" + "/";<br />
+        GALLERY: "hogehoge.com" + "/" + "gallery/";<br />
+        CODEMODULES: "hogehoge.com" + "/" + "gallery/" + "modules/";
+    </blockquote>
+    <h4>出力仕様について</h4>
+    <p>出力されたliタグの最後の要素にはclass属性で"current"が付くため、cssで少々弄れます。</p>
+</div>

@@ -1,0 +1,27 @@
+﻿@model ListVM<ContentCard>
+@{
+    ViewData["TITLE_PAGE"] = Model.Current.Title;
+}
+@section stylesheets{
+    <script type="text/javascript" src="~/js/expander.js"></script>
+}
+
+<div class="row">
+    <div class="col-md-12 col-section">
+        <div id="contentsGuide" class="section">
+            <h2 class="title">@ViewData["TITLE_PAGE"]</h2>
+            <p class="text">@Model.Current.Summary</p>
+        </div>
+    </div>
+</div>
+<div class="row row-groupBox">
+@foreach(var card in Model.Items)
+{
+    <div class="col-sm-12 col-section">
+        <div class="section section-text">
+            <h3 class="title">@card.Title</h3>
+            <div class="text">@Html.Raw(card.Content)</div>
+        </div>
+    </div>
+}
+</div>

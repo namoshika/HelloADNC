@@ -33,8 +33,7 @@ namespace WebSite
         {
             // Add framework services.
             services.AddMvc();
-            services.AddPagemap();
-            services.AddSingleton<PagePathHelper>();
+            services.AddSingleton<Data.AppDbContext>();
             services.AddSingleton(HtmlEncoder.Create(
                 UnicodeRanges.BasicLatin, UnicodeRanges.CjkSymbolsandPunctuation,
                 UnicodeRanges.Hiragana, UnicodeRanges.Katakana, UnicodeRanges.CjkUnifiedIdeographs));
@@ -64,6 +63,12 @@ namespace WebSite
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
             });
+            using (var serviceScope = app.ApplicationServices
+                .GetRequiredService<IServiceScopeFactory>().CreateScope())
+            {
+                var context = serviceScope.ServiceProvider.GetService<Data.AppDbContext>();
+                context.EnsureSeedData();
+            }
         }
 
         public static string SiteOwner => "namoshika";

@@ -1,0 +1,30 @@
+﻿@model ListVM<Page>
+@{
+    ViewData["TITLE_PAGE"] = Model.Current.Title;
+}
+
+<div class="row">
+    <div class="col-md-12 col-section">
+        <div id="contentsGuide" class="section">
+            <h2 class="title">@Model.Current.Title</h2>
+            <p class="text">@Model.Current.Summary</p>
+        </div>
+    </div>
+</div>
+<div class="row row-groupBox">
+    @foreach (var page in Model.Items)
+    {
+        <div class="col-md-4 col-sm-6 col-section">
+            <div class="section section-catalog">
+                <img src="@Url.Content(page.ThumbnailUrl)" class="picture" width="250" height="100" alt="thumb" />
+                <h4 class="title">@page.Title</h4>
+                <span class="text">
+                    @page.Summary
+                    <a asp-controller="@page.Controller"
+                       asp-action="@page.Action"
+                       asp-all-route-data="page.GetParameters()">[開く]</a>
+                </span>
+            </div>
+        </div>
+    }
+</div>

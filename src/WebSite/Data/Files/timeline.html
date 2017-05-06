@@ -1,0 +1,24 @@
+﻿<p>
+    <a href="/product/snippet/timeline/source.txt">PHPSource</a>
+    <a href="/product/snippet/timeline/sampleTimeline.xml">SampleTimeline.xml</a>
+</p>
+<p>更新履歴を生成するPHPスクリプトです。更新履歴を記述したXMLから(&lt;dt&gt;...&lt;/dt&gt;)&amp;(&lt;dd&gt;...&lt;/dd&gt;)の形式でページに出力します。これにより、更新履歴のデータをhtmlから分離するが可能となり、更新履歴を更新する度にトップページを丸ごと差し替えずに済むようになります。</p>
+<a id="bbb-btn" href="javascript:void(0);">詳細</a>
+<div id="bbb-area">
+    <h4>PHPスクリプトについて</h4>
+    <p>この機能はPHPファイル内でWriteTimeline関数として定義されており、関数の仕様は以下の通りです。</p>
+    <blockquote>
+        WriteTimeLine(SimpleXmlElement timelineXml);
+    </blockquote>
+    <p>使用する際は下の例のように更新履歴を挿入したい場所でWriteTimeline関数を呼び出します。</p>
+    <blockquote>
+        &lt;dl&gt;&lt;?php<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;include $phpFilePath;<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;WriteTimeLine(simplexml_load_file("updateLog.xml"));<br />
+        ?&gt;&lt;/dl&gt;
+    </blockquote>
+    <h4>XMLファイルの仕様について</h4>
+    <p>XMLファイルはmessageLogタグをルートタグとし、その下にnewsタグを0個以上保持します。このnewsタグはnoticeタグを0個以上保持しており、noticeタグはmessageタグ1つとcommentタグ0個以上からなっています。</p>
+    <h4>出力仕様について</h4>
+    <p>出力された要素にはclass属性が付き、日付が書かれたdtタグには"date"、メッセージが書かれたタグには"message"、コメントが書かれたタグには"comment"と其々に付けられます。</p>
+</div>

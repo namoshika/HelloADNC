@@ -1,32 +1,31 @@
-﻿@using WebSite.Models
-@model GalleryInfo<LinkInfo>
+﻿@model ListVM<GroupVM<ContentCard>>
 @{
-    ViewData["TITLE_PAGE"] = Model.Title;
+    ViewData["TITLE_PAGE"] = Model.Current.Title;
 }
 
 <div class="row">
     <div class="col-md-12 col-section">
         <div id="contentsGuide" class="section">
             <h2 class="title">@ViewData["TITLE_PAGE"]</h2>
-            <p class="text">@Model.Summary</p>
+            <p class="text">@Model.Current.Summary</p>
         </div>
     </div>
     <div class="col-md-12 col-section">
         <div class="section section-text">
             <h3 class="title">説明</h3>
-            <p class="text multiLine">@Model.Description</p>
+            <p class="text multiLine">@Model.Current.Description</p>
         </div>
     </div>
 </div>
-@foreach (var group in Model.Groups)
+@foreach (var group in Model.Items)
 {
     <div class="row row-groupBox">
         <h3 class="col-md-12 col-title title">@group.Title</h3>
-        @foreach (var item in group.Children)
+        @foreach (var card in group.Contents.OrderBy(_ => _.Id))
         {
             <div class="col-md-4 col-sm-6 col-section">
-                <a href="@item.Action" class='section galleryItem'>
-                    <span class='title'>@item.Title</span>
+                <a href="@card.Content" class='section galleryItem'>
+                    <span class='title'>@card.Title</span>
                 </a>
             </div>
         }

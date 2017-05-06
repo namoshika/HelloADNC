@@ -1,14 +1,13 @@
-﻿@using WebSite.Models
-@model WorkInfo
+﻿@model DetailVM
 @{
-    ViewData["TITLE_PAGE"] = Model.Title;
+    ViewData["TITLE_PAGE"] = Model.Current.Title;
 }
 
 <div class="row">
     <div class="col-md-12 col-section">
         <div id="contentsGuide" class="section">
             <h2 class="title">@ViewData["TITLE_PAGE"]</h2>
-            <p class="text">@Model.Summary</p>
+            <p class="text">@Model.Current.Summary</p>
         </div>
     </div>
 </div>
@@ -28,22 +27,22 @@
 </div>
 <div class="row">
     <div id="articleNav" class="col-md-12 col-section">
-        @if (ViewBag.HasPreviousItem)
+        @if (Model.HasPreviousItem)
         {
             <a asp-action="Detail"
-               asp-route-article="@ViewBag.CurrentArticle"
-               asp-route-id="@ViewBag.PrevIndex">前へ</a>
+               asp-route-article="@Model.CurrentArticle"
+               asp-route-id="@Model.PrevIndex">前へ</a>
         }
         else
         { <span>前へ</span> }
-        @if (ViewBag.HasNextItem)
+        @if (Model.HasNextItem)
         {
             <a asp-action="Detail"
-               asp-route-article="@ViewBag.CurrentArticle"
-               asp-route-id="@ViewBag.NextIndex">次へ</a>
+               asp-route-article="@Model.CurrentArticle"
+               asp-route-id="@Model.NextIndex">次へ</a>
         }
         else
         { <span>次へ</span> }
-        <a asp-action="List" asp-route-article="@ViewBag.CurrentArticle">一覧へ戻る</a>
+        <a asp-action="List" asp-route-article="@Model.CurrentArticle">一覧へ戻る</a>
     </div>
 </div>

@@ -1,0 +1,8 @@
+﻿@model List<Page>
+@functions{
+    string TabClassMarker(string currentTab)
+        => Model.Count >= 2 && Model[1].Title == currentTab ? "class=active" : "";
+}
+<li @TabClassMarker("About")><a asp-controller="home" asp-action="About">About</a></li>
+<li @TabClassMarker("Gallery")><a asp-controller="gallery" asp-action="Index">Gallery</a></li>
+<li @TabClassMarker("Product")><a asp-controller="home" asp-action="Product">Product</a></li>

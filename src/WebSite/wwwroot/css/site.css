@@ -150,6 +150,9 @@ blockquote {
 /*-------------------------------
  * DefList
  *-------------------------------*/
+dl.defList {
+    margin: 0 0 10px;
+}
 dl.defList > dt, dl.defList > dd {
     line-height: 1.3em;
     margin: 0;

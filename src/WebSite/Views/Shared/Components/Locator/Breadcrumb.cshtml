@@ -1,0 +1,15 @@
+﻿@model List<Page>
+@for (var i = 0; i < Model.Count; i++)
+{
+    @if (i < Model.Count - 1)
+    {
+        <li>
+            <a asp-controller="@Model[i].Controller" asp-action="@Model[i].Action"
+               asp-all-route-data="Model[i].GetParameters()">@Model[i].Title</a>
+        </li>
+    }
+    else
+    {
+        <li class="current"><span>@(i == 0 ? Model[0].Title : ".")</span></li>
+    }
+}

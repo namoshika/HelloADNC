@@ -41,7 +41,7 @@
             </div>
             <div class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    @await Component.InvokeAsync("PagePath", "NavMenu")
+                    @await Component.InvokeAsync("Locator", "NavMenu")
                 </ul>
             </div>
         </div>
@@ -50,7 +50,7 @@
         <div class="row">
             <div class="col-md-12 col-title">
                 <ul id="breadcrumbList" class="breadcrumbList">
-                    @await Component.InvokeAsync("PagePath", "Breadcrumb")
+                    @await Component.InvokeAsync("Locator", "Breadcrumb")
                 </ul>
             </div>
         </div>
