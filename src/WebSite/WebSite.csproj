@@ -8,6 +8,7 @@
     <PackageId>WebSite</PackageId>
     <RuntimeFrameworkVersion>1.1.1</RuntimeFrameworkVersion>
     <PackageTargetFallback>$(PackageTargetFallback);dotnet5.6;portable-net45+win8</PackageTargetFallback>
+    <TypeScriptCompileBlocked>true</TypeScriptCompileBlocked>
   </PropertyGroup>
 
   <ItemGroup>
@@ -49,5 +50,7 @@
   <ItemGroup>
     <DotNetCliToolReference Include="BundlerMinifier.Core" Version="2.2.301" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties tsconfig_1json__JSONSchema="" /></VisualStudio></ProjectExtensions>
 
 </Project>
