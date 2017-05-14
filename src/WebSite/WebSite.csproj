@@ -13,7 +13,7 @@
 
   <ItemGroup>
     <None Update="Data\Files\*">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="wwwroot\**\*">
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
@@ -43,7 +43,8 @@
   </ItemGroup>
 
   <Target Name="PrepublishScript" BeforeTargets="PrepareForPublish">
-    <Exec Command="bower install" />
+    <Exec Command="npm install" />
+    <Exec Command="npm run build" />
     <Exec Command="dotnet bundle" />
   </Target>
 
