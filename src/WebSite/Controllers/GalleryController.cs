@@ -60,7 +60,7 @@ namespace WebSite.Controllers
             switch (article)
             {
                 case "100720infoExpr":
-                    var infoExprModel = await _db.ContentInfoExpr.Include(_ => _.Owner)
+                    var infoExprModel = await _db.ContentInfoExpr.Include(_ => _.Owner).ThenInclude(_ => _.Parent)
                         .FirstOrDefaultAsync(_ => _.Owner.Id == string.Format("root/gallery/{0}/{1}", article, id));
                     if (infoExprModel == null)
                         return NotFound();
@@ -69,7 +69,7 @@ namespace WebSite.Controllers
                     vm = new DetailVM(pageModel, infoExprModel);
                     break;
                 case "100823takao":
-                    var takaoModel = await _db.ContentTakao.Include(_ => _.Owner)
+                    var takaoModel = await _db.ContentTakao.Include(_ => _.Owner).ThenInclude(_ => _.Parent)
                         .FirstOrDefaultAsync(_ => _.Owner.Id == string.Format("root/gallery/{0}/{1}", article, id));
                     if (takaoModel == null)
                         return NotFound();

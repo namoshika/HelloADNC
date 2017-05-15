@@ -2,18 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Encodings.Web;
+using System.Text.Unicode;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
-using System.Text.Encodings.Web;
-using System.Text.Unicode;
 
 namespace WebSite
 {
-    using Models;
-
     public class Startup
     {
         public Startup(IHostingEnvironment env)
@@ -33,7 +32,8 @@ namespace WebSite
         {
             // Add framework services.
             services.AddMvc();
-            services.AddSingleton<Data.AppDbContext>();
+            services.AddDbContext<Data.AppDbContext>(option =>
+                option.UseSqlite(@"Data Source='contents.db'"));
             services.AddSingleton(HtmlEncoder.Create(
                 UnicodeRanges.BasicLatin, UnicodeRanges.CjkSymbolsandPunctuation,
                 UnicodeRanges.Hiragana, UnicodeRanges.Katakana, UnicodeRanges.CjkUnifiedIdeographs));
