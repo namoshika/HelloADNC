@@ -1,16 +1,10 @@
 {
   "compilerOptions": {
-    "jsx": "react",
+    "target": "es2015",
     "module": "commonjs",
-    "noEmitOnError": true,
-    "noImplicitAny": true,
-    "removeComments": false,
-    "rootDir": "wwwroot",
+    "jsx": "react",
     "sourceMap": true,
-    "target": "es5"
-  },
-  "exclude": [
-    "node_modules",
-    "obj"
-  ]
+    "noEmitOnError": true,
+    "noImplicitAny": true
+  }
 }

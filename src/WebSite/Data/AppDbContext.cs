@@ -156,6 +156,17 @@ namespace WebSite.Data
                                             Action = "Detail",
                                             Parameters = "article=100720infoExpr&id=7"
                                         },
+                                        new Page()
+                                        {
+                                            Order = 8,
+                                            Id = "root/gallery/100720infoExpr/8",
+                                            Title = "オブジェクト指向習作",
+                                            Summary = "世界各国の首都をGoogleMapsを用いて表示してみました。",
+                                            ThumbnailUrl = "~/gallery/100720infoExpr/oop_js/thumb.jpg",
+                                            Controller = "Gallery",
+                                            Action = "Detail",
+                                            Parameters = "article=100720infoExpr&id=8"
+                                        },
                                     }
                                 },
                                 new Page()
@@ -415,6 +426,7 @@ namespace WebSite.Data
                         Page.Find("root/gallery/100720infoExpr/5"),
                         Page.Find("root/gallery/100720infoExpr/6"),
                         Page.Find("root/gallery/100720infoExpr/7"),
+                        Page.Find("root/gallery/100720infoExpr/8"),
                     }
                 },
                 new Group()
@@ -581,6 +593,13 @@ namespace WebSite.Data
                     Subject = "これまでの演習課題を掲載したWebページを作成する。なお、ページデザインはほぼ自由で各自の好みである。",
                     Comment = "当サイトの初期ver1.0です。ver1.0まで掲載しろとは言われてませんが折角なので載せました。ただ、画像等が現バージョンと共有なので一部おかしいです。CSSが第11回の演習課題で作成したものを継承したために似ています。認識している問題点として、パンくずリストは途中で付け加えたために少々分かりずらいものとなってしまっています。そのため、現バージョンでは改善しました。また、この頃からCSSのLayoutとColorを別ファイルとして分離するようになったために容易にColorを全面変更する事が出来るようになりました。現バージョンでは汎用性の高い外見のLayoutとColorに1つ用意し、ページ共通のLayoutとColorに2つ。個別のページのLayoutとColorで2つに分けています。ちなみに夏季休暇課題で作成したver2.0は当然ver1.0のCSSを改良するはずで、休暇前にベースの大部分が既に出来ていたのですが、タギング方法を文章構造重視にした為に大部分が書きなおす事となり、現verは3.0とも言えます。",
                     Owner = Page.Find("root/gallery/100720infoExpr/7")
+                },
+                new ContentInfoExpr()
+                {
+                    Content = "<a href='oop_js/contents/index.html' class='picture'><img class='picture' src='oop_js/contentsSS.jpg' alt='picture' /></a>",
+                    Subject = "授業で学んだことを活かして世界各国の首都の説明と場所を表示するページを作成してください。",
+                    Comment = "当時のコードは結合度の設計が甘かったため再構成したものを公開。JavaScriptの進化に合わせて今時な機能を使用してTypeScriptでまとめました。",
+                    Owner = Page.Find("root/gallery/100720infoExpr/8")
                 }
             );
             ContentTakao.AddRange(
