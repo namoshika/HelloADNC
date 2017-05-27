@@ -16,23 +16,43 @@
     <div class="col-md-6 col-section">
         <div id="updateHistory" class="section section-text">
             <h2 class="title">Update log</h2>
-            <dl class="defList text"></dl>
+            <dl class="defList text">
+                @{
+                    var dateTxt = string.Empty;
+                    foreach (var history in Model.UpdateHistory)
+                    {
+                        var dateTxtNew = DateTime.Parse(history.Date).ToString("yy/MM/dd");
+                        if (dateTxt != dateTxtNew)
+                        {
+                            <dt>'@dateTxtNew</dt>
+                            dateTxt = dateTxtNew;
+                        }
+                        else
+                        {
+                            <dt>&nbsp;</dt>
+                        }
+                        <dd>@history.Message.Split('\n')[0]</dd>
+                    }
+                }
+            </dl>
         </div>
     </div>
     <div id="quickLink" class="col-md-6 col-section">
-    @foreach(var pin in Model.Pin)
-    {
-        <div class="section section-nav">
-            <h3 class="title"><a asp-controller="@pin.Title.Controller" asp-action="@pin.Title.Action">@pin.Title.Title</a></h3>
-            <ul class="links">
-            @foreach(var linkPage in pin.Page)
-            {
-                <li><a asp-controller="@linkPage.Controller"
-                       asp-action="@linkPage.Action"
-                       asp-all-route-data="linkPage.GetParameters()">@linkPage.Title</a></li>
-            }
-            </ul>
-        </div>
-    }
+        @foreach (var pin in Model.Pin)
+        {
+            <div class="section section-nav">
+                <h3 class="title"><a asp-controller="@pin.Title.Controller" asp-action="@pin.Title.Action">@pin.Title.Title</a></h3>
+                <ul class="links">
+                    @foreach (var linkPage in pin.Page)
+                    {
+                        <li>
+                            <a asp-controller="@linkPage.Controller"
+                               asp-action="@linkPage.Action"
+                               asp-all-route-data="linkPage.GetParameters()">@linkPage.Title</a>
+                        </li>
+                    }
+                </ul>
+            </div>
+        }
     </div>
 </div>

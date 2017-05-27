@@ -79,6 +79,23 @@ blockquote {
 }
 
 /*-------------------------------
+ * defList
+ *-------------------------------*/
+.defList > dt {
+    float: left;
+}
+
+.defList > dd {
+    margin-left: 5em;
+}
+
+.defList > dd:after {
+    clear: both;
+    content: ".";
+    visibility: collapse;
+}
+
+/*-------------------------------
  * Grid
  *-------------------------------*/
 .col-title {
@@ -148,28 +165,9 @@ blockquote {
 }
 
 /*-------------------------------
- * DefList
- *-------------------------------*/
-dl.defList {
-    margin: 0 0 10px;
-}
-dl.defList > dt, dl.defList > dd {
-    line-height: 1.3em;
-    margin: 0;
-    padding: 0;
-}
-dl.defList > dd {
-    margin-left: 5em;
-}
-dl.defList > .firstChild {
-    margin-top: -1.2em;
-}
-
-/*-------------------------------
  * titlePictureItem
  *-----------------------------*/
-.picture
-{
+.picture {
     width: 100%;
 }
 .galleryItem
@@ -212,7 +210,6 @@ dl.defList > .firstChild {
 /*-----------------------------
  * Path
  *----------------------------*/
-
 #breadcrumbList > li * {
     color: #8A8375;
     font-size: large;

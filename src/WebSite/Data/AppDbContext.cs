@@ -15,6 +15,7 @@ namespace WebSite.Data
         public DbSet<ContentCard> ContentCard { get; set; }
         public DbSet<ContentInfoExpr> ContentInfoExpr { get; set; }
         public DbSet<ContentTakao> ContentTakao { get; set; }
+        public DbSet<UpdateLog> UpdateHistory { get; set; }
         public DbSet<Pin> RootPin { get; set; }
 
         public void EnsureSeedData()
@@ -706,7 +707,24 @@ namespace WebSite.Data
                     Owner = Page.Find("root/gallery/100823takao/16")
                 }
             );
+            UpdateHistory.AddRange(GetHistory());
             SaveChanges();
+        }
+        List<UpdateLog> GetHistory()
+        {
+            var http = new System.Net.Http.HttpClient();
+            http.DefaultRequestHeaders.Add("Accept", "application /json");
+            http.DefaultRequestHeaders.Add("User-Agent", "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/58.0.3029.110 Safari/537.36");
+            var json = http.GetStringAsync("https://api.github.com/repos/namoshika/NamoshikaSite/commits").Result;
+            var res = Newtonsoft.Json.Linq.JArray.Parse(json);
+            var history = new List<UpdateLog>();
+            foreach (dynamic item in res)
+            {
+                var date = item.commit.committer.date;
+                var message = item.commit.message;
+                history.Add(new UpdateLog() { Date = date, Message = message });
+            }
+            return history;
         }
     }
 }

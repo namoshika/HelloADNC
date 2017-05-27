@@ -1,24 +1,26 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <messageLog>
-    <news date="'10/07/21">
+    <news date="'10/09/05">
         <notice>
-            <message>hogehoge</message>
+            <message>phpを導入。webサイトのソースの重複問題を解決し、メンテナンス性を向上。</message>
+            <comment>本屋でphpの入門書を立ち読みして書いてみました。</comment>
+        </notice>
+        <notice>
+            <message>サイトの構成を調整</message>
+            <comment>課題の類をGalleryへ移動し、Productタブを新たに追加しました。それからフォントをメイリオに変更しました。</comment>
+        </notice>
+        <notice>
+            <message>夏季休暇課題でザトウムシのテキストをリンクし忘れていたので修正。</message>
         </notice>
     </news>
     <news date="'10/09/01">
         <notice>
-            <message>hogehoge</message>
-            <comment>hogehoge</comment>
+            <message>webサイトをver2.0へリニューアル</message>
         </notice>
     </news>
-    <news date="'10/09/05">
+    <news date="'10/07/21">
         <notice>
-            <message>hogehoge</message>
-            <comment>hogehoge</comment>
-        </notice>
-        <notice>
-            <message>hogehoge</message>
-            <comment>hogehoge</comment>
+            <message>webサイトのver1.0を開設</message>
         </notice>
     </news>
 </messageLog>

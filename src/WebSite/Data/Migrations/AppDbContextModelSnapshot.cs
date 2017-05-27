@@ -150,6 +150,20 @@ namespace WebSite.Data.Migrations
                     b.ToTable("RootPin");
                 });
 
+            modelBuilder.Entity("WebSite.Models.UpdateLog", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Date");
+
+                    b.Property<string>("Message");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UpdateHistory");
+                });
+
             modelBuilder.Entity("WebSite.Models.ContentCard", b =>
                 {
                     b.HasOne("WebSite.Models.Group")

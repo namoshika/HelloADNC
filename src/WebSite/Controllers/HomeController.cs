@@ -20,9 +20,10 @@ namespace WebSite.Controllers
         {
             var rootPage = await _db.Page.FindAsync("root");
             var aboutPage = await _db.Page.FindAsync("root/about");
+            var history = await _db.UpdateHistory.OrderByDescending(_ => _.Date).Take(10).ToListAsync();
             var pin = await _db.RootPin.Include(_ => _.Title).Include(_ => _.Page).OrderBy(_ => _.Id).ToListAsync();
 
-            return View(new RootVM(this, rootPage, aboutPage, pin));
+            return View(new RootVM(this, rootPage, aboutPage, history, pin));
         }
         [Route("about/")]
         public async Task<IActionResult> About()

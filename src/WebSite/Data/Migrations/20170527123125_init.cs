@@ -9,6 +9,19 @@ namespace WebSite.Data.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
+                name: "UpdateHistory",
+                columns: table => new
+                {
+                    Id = table.Column<string>(nullable: false),
+                    Date = table.Column<string>(nullable: true),
+                    Message = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_UpdateHistory", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ContentCard",
                 columns: table => new
                 {
@@ -233,6 +246,9 @@ namespace WebSite.Data.Migrations
 
             migrationBuilder.DropTable(
                 name: "ContentTakao");
+
+            migrationBuilder.DropTable(
+                name: "UpdateHistory");
 
             migrationBuilder.DropTable(
                 name: "Group");

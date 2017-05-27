@@ -9,7 +9,7 @@ using WebSite.Models;
 namespace WebSite.Data.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20170507041048_init")]
+    [Migration("20170527123125_init")]
     partial class init
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -149,6 +149,20 @@ namespace WebSite.Data.Migrations
                     b.HasIndex("TitleId");
 
                     b.ToTable("RootPin");
+                });
+
+            modelBuilder.Entity("WebSite.Models.UpdateLog", b =>
+                {
+                    b.Property<string>("Id")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<string>("Date");
+
+                    b.Property<string>("Message");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UpdateHistory");
                 });
 
             modelBuilder.Entity("WebSite.Models.ContentCard", b =>

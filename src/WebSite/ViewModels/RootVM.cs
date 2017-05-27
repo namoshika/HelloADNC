@@ -10,15 +10,17 @@ namespace WebSite.ViewModels
 {
     public class RootVM
     {
-        public RootVM(Controller controller, Page root, Page about, List<Pin> pin)
+        public RootVM(Controller controller, Page root, Page about, List<UpdateLog> updateHistory, List<Pin> pin)
         {
             Current = root;
+            UpdateHistory = updateHistory;
             Pin = pin;
             Summary = string.Format(
                 root.Summary,
                 $"<a href=\"{controller.Url.Action(about.Action, about.Controller)}\">{Startup.SiteOwner}</a>");
         }
         public Page Current { get; }
+        public List<UpdateLog> UpdateHistory { get; }
         public List<Pin> Pin { get; }
         public string Summary { get; }
     }
