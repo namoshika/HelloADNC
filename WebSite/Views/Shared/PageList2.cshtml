@@ -21,13 +21,13 @@
 {
     <div class="row row-groupBox">
         <h3 class="col-md-12 col-title title">@group.Title</h3>
-        @foreach (var item in group.Contents.OrderBy(_ => _.Order))
+        @foreach (var childPage in group.Contents.OrderBy(_ => _.Order))
         {
             <div class="col-md-4 col-sm-6 col-section">
-                <a asp-controller="@item.Controller"
-                   asp-action="@item.Action" asp-all-route-data="item.GetParameters()" class='section galleryItem'>
-                    <img src='@Url.Content(item.ThumbnailUrl)' alt='thumbnail' class='thumb' />
-                    <span class='title'>@item.Title</span>
+                <a asp-controller="@childPage.Controller"
+                   asp-action="@childPage.Action" asp-all-route-data="childPage.GetParameters()" class='section galleryItem'>
+                    <img src='@Url.Content(childPage.ThumbnailUrl)' alt='thumbnail' class='thumb' />
+                    <span class='title'>@childPage.Title</span>
                 </a>
             </div>
         }

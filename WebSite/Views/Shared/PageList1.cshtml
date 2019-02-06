@@ -12,17 +12,17 @@
     </div>
 </div>
 <div class="row row-groupBox">
-    @foreach (var page in Model.Items)
+    @foreach (var childPage in Model.Items)
     {
         <div class="col-md-4 col-sm-6 col-section">
             <div class="section section-catalog">
-                <img src="@Url.Content(page.ThumbnailUrl)" class="picture" width="250" height="100" alt="thumb" />
-                <h4 class="title">@page.Title</h4>
+                <img src="@Url.Content(childPage.ThumbnailUrl)" class="picture" width="250" height="100" alt="thumb" />
+                <h4 class="title">@childPage.Title</h4>
                 <span class="text">
-                    @page.Summary
-                    <a asp-controller="@page.Controller"
-                       asp-action="@page.Action"
-                       asp-all-route-data="page.GetParameters()">[開く]</a>
+                    @childPage.Summary
+                    <a asp-controller="@childPage.Controller"
+                       asp-action="@childPage.Action"
+                       asp-all-route-data="childPage.GetParameters()">[開く]</a>
                 </span>
             </div>
         </div>

@@ -502,7 +502,7 @@ namespace WebSite.Data
                     Order = 0,
                     Type = CardType.Text,
                     Title = "this site...",
-                    Content = System.IO.File.ReadAllText("./Data/Files/sitedesc.html"),
+                    Content = System.IO.File.ReadAllText($"{AppContext.BaseDirectory}Data/Files/sitedesc.html"),
                     Owner = Page.Find("root/about")
                 },
                 new ContentCard()
@@ -510,7 +510,7 @@ namespace WebSite.Data
                     Order = 1,
                     Type = CardType.Text,
                     Title = "namoshika's Profile",
-                    Content = System.IO.File.ReadAllText("./Data/Files/ownerdesc.html"),
+                    Content = System.IO.File.ReadAllText($"{AppContext.BaseDirectory}Data/Files/ownerdesc.html"),
                     Owner = Page.Find("root/about")
                 },
                 new ContentCard()
@@ -518,7 +518,7 @@ namespace WebSite.Data
                     Order = 2,
                     Type = CardType.Text,
                     Title = "サイト制作について",
-                    Content = System.IO.File.ReadAllText("./Data/Files/comment.html"),
+                    Content = System.IO.File.ReadAllText($"{AppContext.BaseDirectory}Data/Files/comment.html"),
                     Owner = Page.Find("root/about")
                 },
                 new ContentCard()
@@ -526,7 +526,7 @@ namespace WebSite.Data
                     Order = 0,
                     Type = CardType.Text,
                     Title = "パンくずリスト生成用PHP",
-                    Content = System.IO.File.ReadAllText("./Data/Files/breadcrumb.html"),
+                    Content = System.IO.File.ReadAllText($"{AppContext.BaseDirectory}Data/Files/breadcrumb.html"),
                     Owner = Page.Find("root/product/snippet")
                 },
                 new ContentCard()
@@ -534,7 +534,7 @@ namespace WebSite.Data
                     Order = 1,
                     Type = CardType.Text,
                     Title = "更新履歴生成用PHP",
-                    Content = System.IO.File.ReadAllText("./Data/Files/timeline.html"),
+                    Content = System.IO.File.ReadAllText($"{AppContext.BaseDirectory}Data/Files/timeline.html"),
                     Owner = Page.Find("root/product/snippet")
                 }
             );
