@@ -722,7 +722,12 @@ namespace WebSite.Data
             {
                 var date = item.commit.committer.date;
                 var message = item.commit.message;
-                history.Add(new UpdateLog() { Date = date, Message = message });
+                history.Add(new UpdateLog()
+                {
+                    Id = (string)item.sha,
+                    Date = DateTime.Parse((string)date).ToString("yyyy-MM-dd hh:mm:ss"),
+                    Message = message
+                });
             }
             return history;
         }
